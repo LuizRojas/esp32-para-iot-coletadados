@@ -1,0 +1,1 @@
+# esp32-para-iot-coletadados
