@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoramento de Estufa</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <h1>Monitoramento da Estufa</h1>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab('dispositivos')">Dispositivos</button>
+            <button class="tab-button" onclick="showTab('estatisticas')">Estatísticas</button>
+            <button class="tab-button" onclick="showTab('logs')">Logs</button>
+        </div>
+
+        <div id="dispositivos" class="tab-content active">
+            <h2>Dados Atuais da Estufa</h2>
+            <div class="card">
+                <h3>Sensores Principais</h3>
+                <p><strong>Última Atualização:</strong> <span id="temp-timestamp">N/D</span></p>
+                <p><strong>Temperatura do Ar:</strong> <span id="temp-ar">N/D</span> °C</p>
+                <p><strong>Umidade do Ar:</strong> <span id="umid-ar">N/D</span> %</p>
+                <p><strong>Dispositivo ESP:</strong> <span id="device-esp">N/D</span></p>
+            </div>
+
+            <div class="card">
+                <h3>Umidade do Solo</h3>
+                <p><strong>Sensor 1:</strong> <span id="umid-solo1">N/D</span></p>
+                <p><strong>Sensor 2:</strong> <span id="umid-solo2">N/D</span></p>
+                <p><strong>Sensor 3:</strong> <span id="umid-solo3">N/D</span></p>
+            </div>
+
+            <div class="card">
+                <h3>Câmera</h3>
+                <img id="camera-image" src="assets/camera.jpg" alt="Imagem da Estufa">
+                <button class="btn" id="btn-atualizar-foto">Atualizar Foto</button>
+            </div>
+
+            <div class="card">
+                <h3>Atuadores (Status Reportado)</h3>
+                <p><strong>Bomba d'Água:</strong> <span id="status-bomba">N/D</span></p>
+                <p><strong>Válvula 1:</strong> <span id="status-valvula1">N/D</span></p>
+                <p><strong>Válvula 2:</strong> <span id="status-valvula2">N/D</span></p>
+                <p><strong>Válvula 3:</strong> <span id="status-valvula3">N/D</span></p>
+                <small>Este frontend apenas exibe o status reportado, não controla os atuadores.</small>
+            </div>
+        </div>
+
+        <div id="estatisticas" class="tab-content">
+            <h2>Estatísticas da Estufa</h2>
+            <p class="info-message">Os dados são puxados do backend a cada atualização.</p>
+
+            <div class="chart-container">
+                <h3>Temperatura do Ar</h3>
+                <canvas id="chartTemperatura"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h3>Umidade do Ar</h3>
+                <canvas id="chartUmidadeAr"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h3>Umidade do Solo (Sensor 1)</h3>
+                <canvas id="chartUmidadeSolo1"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h3>Umidade do Solo (Sensor 2)</h3>
+                <canvas id="chartUmidadeSolo2"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h3>Umidade do Solo (Sensor 3)</h3>
+                <canvas id="chartUmidadeSolo3"></canvas>
+            </div>
+        </div>
+
+        <div id="logs" class="tab-content">
+            <h2>Logs do ESP32</h2>
+            <div class="card">
+                <h3>Selecionar ESP32</h3>
+                <select id="select-esp32">
+                    </select>
+            </div>
+            <div class="log-output">
+                <h3>Logs do Dispositivo <span id="log-device-name"></span></h3>
+                <div id="logs-list">Nenhum log disponivel.</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+    <div id="notification-area"></div>
+</body>
+</html>
