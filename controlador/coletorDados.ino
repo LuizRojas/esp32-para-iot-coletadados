@@ -7,13 +7,13 @@
 // ==========================
 // CONFIGURACAO DA REDE WI-FI
 // ==========================
-#define WIFI_SSID "luiz-2g"
-#define WIFI_PASSWORD "outspace"
+#define WIFI_SSID "seu_wifi"
+#define WIFI_PASSWORD "sua_senha"
 
 // ==========================
 // URL DA API DO SERVIDOR (Backend Flask)
 // ==========================
-#define FLASK_IP "192.168.1.133"
+#define FLASK_IP "ip_flask_backend"
 #define FLASK_PORT "5000"
 
 String API_POST_URL_STR = String("http://") + FLASK_IP + ":" + FLASK_PORT + "/api/sensores/registrar";
